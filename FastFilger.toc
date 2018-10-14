@@ -1,0 +1,14 @@
+## Interface: 80000
+## Title: FastFilger
+## Notes: Faster
+## Author: WINDDPAN
+## Version: 1.0
+## Credits: Affli, Ildyria, SinaC, Nils Ruesch, Erratic, Wetxi, WINDDPAN
+## OptionalDeps: OmniCC
+## SavedVariables: FastFilgerDB
+
+Spells.lua
+PVPSpell.lua
+Style.lua
+Lib.lua
+Core.lua
