@@ -20,18 +20,28 @@ function Filger:UpdateBarStyle(bar, value)
 	UpdateBarStyle(self, bar, value)
 end
 
-function GUIDRole(uid)
+function GUIDRoles(uid)
 	if uid == nil then
 		return nil
-	elseif UnitGUID("player") == uid then
-		return "player"
-	elseif UnitGUID("target") == uid then
-		return "target"
-	elseif UnitGUID("focus") == uid then
-		return "focus"
-	else
-		return nil
 	end
+	local contians = false
+	local result = {}
+	if UnitGUID("target") == uid then
+		result["target"] = true
+		contians = true
+	end
+	if UnitGUID("focus") == uid then
+		result["focus"] = true
+		contians = true
+	end
+	if UnitGUID("player") == uid then
+		result["player"] = true
+		contians = true
+	end
+	if contians then
+		return result
+	end
+	return nil
 end
 
 function Filger:UnitAura(unitID, inSpellID, spell, filter, absID)

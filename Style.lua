@@ -1,15 +1,15 @@
-﻿local _, ns = ...
+﻿local addon, ns = ...
 
 local mult = 1
 local raidColor = RAID_CLASS_COLORS[select(2, UnitClass("player"))]
 local barColor = {raidColor.r, raidColor.g, raidColor.b}
 local buffBorderColor = {49/255, 213/255, 78/255}
 local debuffBorderColor = {249/255, 51/255, 26/255}
-local Media = "Interface\\AddOns\\ShestakUI_Filger\\Media\\"
+local Media = "Interface\\Addons\\"..addon.."\\Media\\"
 local font = Media.."number.ttf"
 local barfg = Media.."White"
 local back = Media.."HalBackground"
-local border = Media.."GlowTex"
+local glow = Media.."GlowTex"
 local barbg = Media.."Texture"
 
 local function SetBackdrop(parent)
@@ -17,9 +17,10 @@ local function SetBackdrop(parent)
 	F:SetFrameLevel(4)
 	F:SetPoint("TOPLEFT", -1 * mult, 1 * mult)
 	F:SetPoint("BOTTOMRIGHT", 1 * mult, -1 * mult)
+	
 	F:SetBackdrop({
 		bgFile = back, 
-		edgeFile = border, 
+		edgeFile = glow, 
 		insets = {left = 1 * mult, right = 1 * mult, top = 1 * mult, bottom = 1 * mult},
 		tile = false, tileSize = 0, 
 		edgeSize = 3 * mult,
@@ -57,7 +58,7 @@ function SetTemplate(group, bar)
 	bar.cfg = true
 end
 
-function UpdateBarStyle(f, bar, value)
+function UpdateBarStyle(group, bar, value)
 	if bar.Border ~= nil then
 		if value.data.filter == "DEBUFF" then
 			bar.Border:SetBackdropBorderColor(unpack(debuffBorderColor))

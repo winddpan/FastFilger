@@ -47,13 +47,13 @@ function Filger:OnEvent(event, unit)
 	elseif event == "COMBAT_LOG_EVENT_UNFILTERED" then
 		local timestamp, eventType, hideCaster, srcGUID, srcName, srcFlags, srcFlags2, dstGUID, dstName, dstFlags, dstFlags2 = CombatLogGetCurrentEventInfo()
 		if LogEvents[eventType] then
-			local target = GUIDRole(dstGUID)
-			local caster = GUIDRole(srcGUID)
-			if target then
+			local targets = GUIDRoles(dstGUID)
+			local casters = GUIDRoles(srcGUID)
+			if targets then
 				local spellId, spellName, spellSchool, auraType = select(12, CombatLogGetCurrentEventInfo())
 				local data = SpellGroups[self.Id].spells[spellId]
 
-				if data and (data.caster == nil or caster == data.caster or data.caster == "all") then
+				if data and (data.caster == nil or casters[data.caster] or data.caster == "all") and (targets[data.unitID] or data.unitID == nil) then
 					local name, icon, count, duration, expirationTime, start, spid
 					if data.filter == "BUFF" or data.filter == "DEBUFF" then
 						if eventType ~= "SPELL_AURA_REMOVED" then
@@ -63,7 +63,7 @@ function Filger:OnEvent(event, unit)
 							else 
 								filter = "HARMFUL"
 							end
-							name, icon, count, _, duration, expirationTime, caster, _, _, spid = Filger:UnitAura(target, spellId, spellName, filter)
+							name, icon, count, _, duration, expirationTime, caster, _, _, spid = Filger:UnitAura(data.unitID, spellId, spellName, filter)
 							if spid then
 								self.actives[spid] = {data = data, name = name, icon = icon, count = count, start = expirationTime - duration, duration = duration, spid = spid, sort = data.sort}
 							end
@@ -75,7 +75,7 @@ function Filger:OnEvent(event, unit)
 				end
 			end
 		end
-	elseif event == "PLAYER_ENTERING_WORLD" or event == "PLAYER_TARGET_CHANGED" or event == "PLAYER_FOCUS_CHANGED" then
+	elseif event == "PLAYER_ENTERING_WORLD" or event == "PLAYER_TARGET_CHANGED" or event == "PLAYER_FOCUS_CHANGED" or event == "PLAYER_ENTERING_WORLD" then
 		for spid, value in pairs(self.actives) do
 			self.actives[spid] = nil
 		end
