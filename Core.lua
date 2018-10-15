@@ -53,7 +53,7 @@ function Filger:OnEvent(event, unit)
 				local spellId, spellName, spellSchool, auraType = select(12, CombatLogGetCurrentEventInfo())
 				local data = SpellGroups[self.Id].spells[spellId]
 
-				if data and (data.caster == nil or casters[data.caster] or data.caster == "all") and (targets[data.unitID] or data.unitID == nil) then
+				if data and (data.caster == nil or (casters and casters[data.caster]) or data.caster == "all") and (targets[data.unitID] or data.unitID == nil) then
 					local name, icon, count, duration, expirationTime, start, spid
 					if data.filter == "BUFF" or data.filter == "DEBUFF" then
 						if eventType ~= "SPELL_AURA_REMOVED" then

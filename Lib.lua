@@ -1,11 +1,11 @@
-﻿local _, ns = ...
+﻿local addon, ns = ...
 local Filger = {}
 local Filger_Spells = Filger_Spells or {}
 local MyUnits = {player = true, vehicle = true, pet = true}
 local class = select(2, UnitClass("player"))
 
 local Misc = CreateFrame("Frame")
-Misc.font = "Interface\\AddOns\\ShestakUI_Filger\\Media\\".."number.ttf"
+Misc.font = "Interface\\Addons\\"..addon.."\\Media\\".."number.ttf"
 Misc.numSize = 14					-- 层数, 计时条的计时数字大小
 Misc.barNumSize = 12				-- 计时条的计时数字大小
 Misc.barNameSize = 12				-- 计时条法术名称字体大小
