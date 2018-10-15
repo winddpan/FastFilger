@@ -11,7 +11,7 @@ local LogEvents = {SPELL_AURA_REMOVED = true,
 				   SPELL_AURA_APPLIED = true, 
 				   SPELL_AURA_APPLIED_DOSE = true,
 				   SPELL_AURA_REFRESH = true,
-				   SPELL_PERIODIC_DAMAGE = false}
+				   SPELL_PERIODIC_DAMAGE = true}
 
 function Filger:OnEvent(event, unit)	
 	if event == "SPELL_UPDATE_COOLDOWN" then
