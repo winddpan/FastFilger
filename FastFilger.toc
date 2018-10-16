@@ -8,7 +8,7 @@
 ## SavedVariables: FastFilgerDB
 
 Spells.lua
-PVPSpell.lua
+PVPSpells.lua
 Style.lua
 Lib.lua
 Core.lua
