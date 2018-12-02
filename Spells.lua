@@ -88,9 +88,6 @@ Filger_Spells = {
             
             { spellID = 101568, unitID = "player", caster = "player", filter = "BUFF"},
             { spellID = 196770, unitID = "player", caster = "player", filter = "BUFF"},
-
-            -- 溃烂之伤
-            {spellID = 194310, unitID = "target", caster = "player", filter = "DEBUFF"},
             
             {spellID = 195181, unitID = "player", caster = "player", filter = "BUFF"},
         },
@@ -103,10 +100,10 @@ Filger_Spells = {
             Position = {unpack(Filger_Settings.target_debuff_icon)},
             
             -- 溃烂之伤
-            --{spellID = 194310, unitID = "target", caster = "player", filter = "DEBUFF"},
-            {spellID = 196782, unitID = "target", caster = "player", filter = "DEBUFF"},
+            {spellID = 194310, unitID = "target", caster = "player", filter = "DEBUFF"},
             -- 恶性瘟疫
             {spellID = 191587, unitID = "target", caster = "player", filter = "DEBUFF"},
+			{spellID = 196782, unitID = "target", caster = "player", filter = "DEBUFF"},
             -- 血之疫病
             {spellID = 55078, unitID = "target", caster = "player", filter = "DEBUFF"},
             -- 冰霜疫病
@@ -134,6 +131,8 @@ Filger_Spells = {
             IconSize = 38,
             Position = {unpack(Filger_Settings.player_buff_icon)},
             
+			{spellID = 275863, unitID = "player", caster = "player", filter = "BUFF"},
+
             {spellID = 221630, unitID = "player", caster = "player", filter = "BUFF"},
             {spellID = 193641, unitID = "player", caster = "player", filter = "BUFF"},
             --{spellID = 192425, unitID = "target", caster = "player", filter = "DEBUFF"},
@@ -210,18 +209,17 @@ Filger_Spells = {
 
         },
         {
-            Name = "P_BUFF_ICON",
+            Name = "P_BUFF_ICON2",
             Direction = "LEFT",
             Mode = "ICON",
             Interval = 2,
             Alpha = 1,
             IconSize = 38,
             Position = {unpack(Filger_Settings.player_proc_icon)},
-                        
-                        
+                                    
             -- 必爆肩膀
-            {spellID = 235027, unitID = "player", caster = "player", filter = "BUFF"},
-            {spellID = 245640, unitID = "player", caster = "player", filter = "BUFF"},
+            {spellID = 278317, unitID = "player", caster = "player", filter = "BUFF"},
+            {spellID = 278981, unitID = "player", caster = "player", filter = "BUFF"},
 
             -- 灌铅骰子
             {spellID = 240837, unitID = "player", caster = "player", filter = "BUFF"},
@@ -234,26 +232,17 @@ Filger_Spells = {
             {spellID = 197498, unitID = "player", caster = "player", filter = "BUFF"},
             
             -- 天赋-敏锐
-            {spellID = 193538, unitID = "player", caster = "player", filter = "BUFF"},
+            --{spellID = 193538, unitID = "player", caster = "player", filter = "BUFF"},
             
             -- 披风
             {spellID = 208693, unitID = "player", caster = "player", filter = "BUFF", stack = 20},
             {spellID = 228224, unitID = "player", caster = "player", filter = "BUFF", stack = 20},
-            
-            -- SP
-            {spellID = 214802, unitID = "player", caster = "player", filter = "BUFF"},  --铁花爆击
-            {spellID = 214807, unitID = "player", caster = "player", filter = "BUFF"},  --铁花精通
-            {spellID = 214803, unitID = "player", caster = "player", filter = "BUFF"},  --铁花急速
-
-            {spellID = 225726, unitID = "player", caster = "player", filter = "BUFF"},  --焦镜暴击
-            {spellID = 225729, unitID = "player", caster = "player", filter = "BUFF"},  --焦镜精通
-            {spellID = 225730, unitID = "player", caster = "player", filter = "BUFF"},  --焦镜急速
-            
-            {spellID = 225736, unitID = "player", caster = "player", filter = "BUFF"},  --回归打击
 
             {spellID = 221796, unitID = "player", caster = "player", filter = "BUFF"},
             {spellID = 222517, unitID = "player", caster = "player", filter = "BUFF"},
             {spellID = 222518, unitID = "player", caster = "player", filter = "BUFF"},
+			
+			{spellID = 279754, unitID = "player", caster = "player", filter = "BUFF"},
         },
         {
             Name = "狂徒buff",
@@ -1231,16 +1220,20 @@ Filger_Spells = {
             IconSize = IconSize,
             Position = {unpack(Filger_Settings.player_buff_icon)},
 
+			{spellID = 265258, unitID = "player", caster = "player", filter = "BUFF"},
+			{spellID = 193065, unitID = "player", caster = "player", filter = "BUFF"},
+
             -- Dispersion
             {spellID = 47585, unitID = "player", caster = "player", filter = "BUFF"},
             -- Power Infusion
             {spellID = 10060, unitID = "player", caster = "player", filter = "BUFF"},
             -- Spirit Shell
-            {spellID = 109964, unitID = "player", caster = "player", filter = "BUFF", absID = true},
+            {spellID = 109964, unitID = "player", caster = "player", filter = "BUFF"},
             -- Vampiric Embrace
             {spellID = 15286, unitID = "player", caster = "player", filter = "BUFF"},
             -- Power Word: Shield
             {spellID = 17, unitID = "player", caster = "all", filter = "BUFF"},
+			{spellID = 194384, unitID = "player", caster = "player", filter = "BUFF"},
             -- Renew
             {spellID = 139, unitID = "player", caster = "player", filter = "BUFF"},
             -- Fade
@@ -1257,85 +1250,15 @@ Filger_Spells = {
             IconSize = IconSize,
             Position = {unpack(Filger_Settings.player_proc_icon)},
 
+			{spellID = 197871, unitID = "player", caster = "player", filter = "BUFF"},
+			{spellID = 121557, unitID = "player", caster = "player", filter = "BUFF"},
+
             -- Buffs
-            -- Divine Insight
-            {spellID = 124430, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Surge of Light
-            {spellID = 114255, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Surge of Darkness
-            {spellID = 87160, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Twist of Fate
-            {spellID = 123254, unitID = "player", caster = "player", filter = "BUFF"},
+            {spellID = 47536, unitID = "player", caster = "player", filter = "BUFF"},
+            {spellID = 33206, unitID = "player", caster = "player", filter = "BUFF"},
+            {spellID = 19236, unitID = "player", caster = "player", filter = "BUFF"},
+            {spellID = 197862, unitID = "player", caster = "player", filter = "BUFF"},
 
-            -- Trinkets
-            -- General
-            -- Darkmoon Cards (Proc)
-            {spellID = 128985, unitID = "player", caster = "player", filter = "BUFF"},
-            -- PvP Trinkets (Health, Use)
-            {spellID = 126697, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Caster General
-            -- Shock-Charger Medallion Figurine (Intellect, Use)
-            {spellID = 136082, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Jade Magistrate Figurine (Crit, Use)
-            {spellID = 126605, unitID = "player", caster = "player", filter = "BUFF"},
-            -- PvP Trinkets (Spell Power, Use)
-            {spellID = 126683, unitID = "player", caster = "player", filter = "BUFF"},
-            -- PvP Trinkets (Spell Power, Proc)
-            {spellID = 126705, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Caster DPS
-            -- Purified Bindings of Immerseus (Intellect, Proc)
-            {spellID = 146046, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Kardris' Toxic Totem (Intellect, Proc)
-            {spellID = 148906, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Frenzied Crystal of Rage (Intellect, Proc)
-            {spellID = 148897, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Black Blood of Y'Shaarj (Intellect, Proc)
-            {spellID = 146184, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Yu'lon's Bite (Crit, Proc)
-            {spellID = 146218, unitID = "player", caster = "player", filter = "BUFF"},
-            -- 雷神的精准之视
-            {spellID = 138963, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Volatile Talisman of the Shado-Pan Assault (Haste, Proc)
-            {spellID = 138703, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Cha-Ye's Essence of Brilliance (Intellect, Proc)
-            {spellID = 139133, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Breath of the Hydra (Intellect, Proc)
-            {spellID = 138898, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Wushoolay's Final Choice (Intellect, Proc)
-            {spellID = 138786, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Essence of Terror (Haste, Proc)
-            {spellID = 126659, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Light of the Cosmos (Intellect, Proc)
-            {spellID = 126577, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Caster Heal
-            -- Prismatic Prison of Pride (Intellect, Proc)
-            {spellID = 146314, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Nazgrim's Burnished Insignia (Intellect, Proc)
-            {spellID = 148908, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Thok's Acid-Grooved Tooth (Intellect, Proc)
-            {spellID = 148911, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Qin-xi's Polarizing Seal (Intellect, Proc)
-            {spellID = 126588, unitID = "player", caster = "player", filter = "BUFF"},
-
-            -- Enchants
-            -- General
-            -- Caster General
-            -- Jade Spirit (Intellect + Spirit)
-            {spellID = 104993, unitID = "player", caster = "all", filter = "BUFF"},
-            -- Lightweave (Intellect)
-            {spellID = 125487, unitID = "player", caster = "player", filter = "BUFF"},
-            -- Caster Heal
-
-            -- 橙色多彩
-            --{spellID = 137596, unitID = "player", caster = "all", filter = "BUFF"},
-            -- 阴险之源钻 (暴击, 急速)
-            {spellID = 137590, unitID = "player", caster = "all", filter = "BUFF"},
-            -- 英勇之源钻 (智力, 节能)
-            {spellID = 137288, unitID = "player", caster = "all", filter = "BUFF"},
-
-            -- 史诗披风
-            -- Spirit of Chi-Ji
-            {spellID = 146200, unitID = "player", caster = "all", filter = "BUFF"},
         },
         {
             Name = "T_DEBUFF_ICON",
@@ -1347,8 +1270,8 @@ Filger_Spells = {
             Position = {unpack(Filger_Settings.target_debuff_icon)},
 
             {spellID = 17, unitID = "target", caster = "player", filter = "BUFF"},
+			{spellID = 204213, unitID = "target", caster = "player", filter = "DEBUFF"},
             {spellID = 34914, unitID = "target", caster = "player", filter = "DEBUFF"},
-            {spellID = 589, unitID = "target", caster = "player", filter = "DEBUFF"},
 
             -- Void Tendril's Grasp
             {spellID = 114404, unitID = "target", caster = "player", filter = "DEBUFF"},

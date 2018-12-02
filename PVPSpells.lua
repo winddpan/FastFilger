@@ -434,8 +434,8 @@ for oi,ov in pairs(orders) do
     end
 end
 
-local focus_position = {"BOTTOMLEFT", UIParent, "CENTER", 100, 500} 
-local target_position = {"BOTTOMLEFT", UIParent, "CENTER", 100, 200}
+local focus_position = {"BOTTOMLEFT", UIParent, "CENTER", 100, 200} 
+local target_position = {"BOTTOMLEFT", UIParent, "CENTER", 100, -200}
 local target_buff_position = {"TOPLEFT", UIParent, "CENTER", 200, -4}
 
 local targetCC = {
@@ -473,5 +473,5 @@ end
 
 local AllSpells = Filger_Spells["ALL"] or {}
 table.insert(AllSpells, targetCC)
---table.insert(AllSpells, focusCC)
+table.insert(AllSpells, focusCC)
 table.insert(AllSpells, targetBuff)
