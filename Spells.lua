@@ -5,7 +5,7 @@ local Filger_Settings = {
     player_buff_icon = {"BOTTOMRIGHT", UIParent, "CENTER", -200, 0},    -- P_BUFF_ICON
     player_proc_icon = {"TOPRIGHT", UIParent, "CENTER", -200, -4},      -- P_PROC_ICON
     target_debuff_icon = {"BOTTOMLEFT", UIParent, "CENTER", 200, 0},    -- T_DEBUFF_ICON
-    trinket = {"TOPRIGHT", UIParent, "BOTTOM", -350, 265},      -- Trinket
+    trinket = {"TOPRIGHT", UIParent, "BOTTOM", -150, 265},      -- Trinket
     cooldown = {"BOTTOMLEFT", UIParent, "CENTER", -306, -247},          -- Cooldown
 }
 
@@ -13,12 +13,11 @@ Filger_Spells = {
     ["ALL"] = {
         {
             Name = "Trinket",
-            Direction = "DOWN",
-            Mode = "BAR",
-            BarWidth = 178,
+            Direction = "LEFT",
+            Mode = "ICON",
             Interval = 1,
             Alpha = 1,
-            IconSize = 26,
+            IconSize = 44,
             Position = {unpack(Filger_Settings.trinket)},
             
             {spellID = 7744, unitID = "player", caster = "player", filter = "CD"},
@@ -40,7 +39,8 @@ Filger_Spells = {
                 { spellID = 53365, unitID = "player", caster = "player", filter = "BUFF"},
                 { spellID = 242583, unitID = "player", caster = "player", filter = "BUFF"},
 
-                -- 收割急速buff
+				{spellID = 207289, unitID = "player", caster = "player", filter = "BUFF" },
+
                 {spellID = 215711, unitID = "player", caster = "player", filter = "BUFF" },
                 {spellID = 207319, unitID = "player",caster = "all", filter = "BUFF"}, 
                 {spellID = 216974, unitID = "player", caster = "player", filter = "BUFF"},
@@ -86,9 +86,9 @@ Filger_Spells = {
             IconSize = 36,
             Position = {unpack(Filger_Settings.player_proc_icon)},
             
-            { spellID = 101568, unitID = "player", caster = "player", filter = "BUFF"},
-            { spellID = 196770, unitID = "player", caster = "player", filter = "BUFF"},
-            
+			{spellID = 48265, unitID = "player", caster = "player", filter = "BUFF"},
+            {spellID = 101568, unitID = "player", caster = "player", filter = "BUFF"},
+            {spellID = 196770, unitID = "player", caster = "player", filter = "BUFF"},
             {spellID = 195181, unitID = "player", caster = "player", filter = "BUFF"},
         },
         {
@@ -244,9 +244,10 @@ Filger_Spells = {
 			
 			{spellID = 279754, unitID = "player", caster = "player", filter = "BUFF"},
         },
+		--[[
         {
             Name = "狂徒buff",
-            Direction = "LEFT",
+            Direction = "RIGHT",
             Mode = "ICON",
             Interval = -1,
             Alpha = 1,
@@ -260,7 +261,7 @@ Filger_Spells = {
             {spellID = 199603, unitID = "player", caster = "player", filter = "BUFF"},
             {spellID = 199600, unitID = "player", caster = "player", filter = "BUFF"},
             {spellID = 193358, unitID = "player", caster = "player", filter = "BUFF"},
-        },
+        },]]
         {
             Name = "T_DEBUFF_ICON",
             Direction = "RIGHT",
@@ -270,6 +271,8 @@ Filger_Spells = {
             IconSize = 37,
             Position = {unpack(Filger_Settings.target_debuff_icon)},
             
+			{spellID = 280817, unitID = "target", caster = "player", filter = "DEBUFF"},
+
             -- 狂徒 鬼魅攻击
             {spellID = 196937, unitID = "target", caster = "player", filter = "DEBUFF"},
             {spellID = 192925, unitID = "target", caster = "player", filter = "DEBUFF"},
@@ -320,6 +323,7 @@ Filger_Spells = {
             -- DPS
             {spellID = 162264, unitID = "player", caster = "player", filter = "BUFF"},
             {spellID = 211048, unitID = "player", caster = "player", filter = "BUFF"},
+            {spellID = 258920, unitID = "player", caster = "player", filter = "BUFF"},
 
             -- TANK
             {spellID = 178740, unitID = "player", caster = "player", filter = "BUFF"},

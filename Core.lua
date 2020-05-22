@@ -11,15 +11,27 @@ local barFrames = {}
 function Filger:OnCombatEvent(event, unit)    
 	if event == "COMBAT_LOG_EVENT_UNFILTERED" then
 		local timestamp, eventType, hideCaster, srcGUID, srcName, srcFlags, srcFlags2, dstGUID, dstName, dstFlags, dstFlags2 = CombatLogGetCurrentEventInfo()
+
 		if string.find(eventType, "SPELL") ~= nil then
 			local targets = GUIDRoles(dstGUID)
 			local casters = GUIDRoles(srcGUID)
-			if targets then
+			if casters["player"] or targets then
 				local spellId, spellName, spellSchool, auraType = select(12, CombatLogGetCurrentEventInfo())
+                --print(spellName, spellId)
 				for i = 1, #barFrames, 1 do
 					local self = barFrames[i]
 					local data = SpellGroups[self.Id].spells[spellId]
-					if data and (data.caster == nil or (casters and casters[data.caster]) or data.caster == "all") and (targets[data.unitID] or data.unitID == nil) then
+
+                    -- 光环类SpellId有多个 使用spellName智能匹配
+					if not data then
+                        for spid, value in pairs(self.actives) do
+                            if value.name == spellName then
+                                data = value.data
+                                break
+                            end
+                        end
+                    end
+                    if data and (data.caster == nil or (casters and casters[data.caster]) or data.caster == "all") and (targets[data.unitID] or data.unitID == nil or data.unitID == "player") then
 						local name, icon, count, duration, expirationTime, start, spid
 						if data.filter == "BUFF" or data.filter == "DEBUFF" then
 							if eventType ~= "SPELL_AURA_REMOVED" then
@@ -30,7 +42,8 @@ function Filger:OnCombatEvent(event, unit)
 									filter = "HARMFUL"
 								end
 								name, icon, count, _, duration, expirationTime, caster, _, _, spid = Filger:UnitAura(data.unitID, spellId, spellName, filter)
-								if spid then
+
+								if spid and duration ~= nil and duration > 0 then
 									self.actives[spid] = {data = data, name = name, icon = icon, count = count, start = expirationTime - duration, duration = duration, spid = spid, sort = data.sort}
 								end
 							else
@@ -58,6 +71,7 @@ function Filger:OnEvent(event, unit)
 						else
 							start, duration = GetSpellCooldown(name)
 						end
+                        --print("SPELL_UPDATE_COOLDOWN", name)
 						spid = data.spellID
 					end
 				elseif data.slotID then
