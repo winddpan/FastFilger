@@ -15,7 +15,7 @@ function Filger:OnCombatEvent(event, unit)
 		if string.find(eventType, "SPELL") ~= nil then
 			local targets = GUIDRoles(dstGUID)
 			local casters = GUIDRoles(srcGUID)
-			if casters["player"] or targets then
+			if targets or (casters ~= nil and casters["player"]) then
 				local spellId, spellName, spellSchool, auraType = select(12, CombatLogGetCurrentEventInfo())
                 --print(spellName, spellId)
 				for i = 1, #barFrames, 1 do
@@ -31,7 +31,7 @@ function Filger:OnCombatEvent(event, unit)
                             end
                         end
                     end
-                    if data and (data.caster == nil or (casters and casters[data.caster]) or data.caster == "all") and (targets[data.unitID] or data.unitID == nil or data.unitID == "player") then
+                    if data and (data.caster == nil or (casters and casters[data.caster]) or data.caster == "all") and (data.unitID == "player" or (targets and targets[data.unitID]) or data.unitID == nil) then
 						local name, icon, count, duration, expirationTime, start, spid
 						if data.filter == "BUFF" or data.filter == "DEBUFF" then
 							if eventType ~= "SPELL_AURA_REMOVED" then
