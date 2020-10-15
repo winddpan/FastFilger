@@ -13,11 +13,10 @@ local glow = Media.."GlowTex"
 local barbg = Media.."Texture"
 
 local function SetBackdrop(parent)
-    local F = CreateFrame("Frame", nil, parent)
+    local F = CreateFrame("Frame", nil, parent, BackdropTemplateMixin and "BackdropTemplate")
     F:SetFrameLevel(4)
     F:SetPoint("TOPLEFT", -1 * mult, 1 * mult)
     F:SetPoint("BOTTOMRIGHT", 1 * mult, -1 * mult)
-    
     F:SetBackdrop({
         bgFile = back, 
         edgeFile = glow, 
@@ -28,7 +27,8 @@ local function SetBackdrop(parent)
     F:SetBackdropColor(0, 0, 0, 0)
     F:SetBackdropBorderColor(0, 0, 0, .75)
     
-    F.Border = CreateFrame("Frame", nil, F)
+    
+    F.Border = CreateFrame("Frame", nil, F, BackdropTemplateMixin and "BackdropTemplate")
     F.Border:SetPoint("TOPLEFT", 3, -3)
     F.Border:SetPoint("BOTTOMRIGHT", -3, 3)
     F.Border:SetBackdrop({ 

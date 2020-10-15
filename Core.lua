@@ -177,7 +177,7 @@ function Init()
         for i = 1, #SpellGroups, 1 do
             local data = SpellGroups[i].data
 
-            local movebar = CreateFrame("Frame", "FFilgerFrame"..i.."_"..data.Name.."Movebar", UIParent)
+            local movebar = CreateFrame("Frame", "FFilgerFrame"..i.."_"..data.Name.."Movebar", UIParent, BackdropTemplateMixin and "BackdropTemplate")
             movebar:Hide()
             movebar:SetFrameLevel(10)
             movebar:EnableMouse(true)
@@ -189,7 +189,7 @@ function Init()
                 local AnchorF, _, AnchorT, ax, ay = self:GetPoint()
                 FastFilgerDB[data.Name] = {AnchorF, "UIParent", AnchorT, ax, ay}
             end)
-            movebar:SetBackdrop({  bgFile = "Interface\\Buttons\\WHITE8x8" , })
+            movebar:SetBackdrop({ bgFile='interface/buttons/white8x8' })
             movebar:SetBackdropColor(0, 1, 0, 0.5)
             movebar:SetSize(data.IconSize or 37, data.IconSize or 37)
             movebar.Position = data.Position or "CENTER"
